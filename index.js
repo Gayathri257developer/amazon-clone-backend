@@ -25,6 +25,11 @@ mongoose.connect(MONGO_URL, {
   useUnifiedTopology: true,
 });
 
+app.get('/', (req,res)=>{
+   res.send('hello');
+})
+
+
 app.post("/api/products/add", (req, res) => {
   const productDetail = req.body;
 
