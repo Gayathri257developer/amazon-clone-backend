@@ -181,8 +181,8 @@ app.get("*", function (_, res) {
   );
 });
 
-const PORT = process.env.PORT || 8000;
 
-app.listen(PORT, () => {
-  console.log(`backend running.... on ${PORT}`);
+
+app.listen(8000, () => {
+  console.log(`backend running.... `);
 });
