@@ -6,6 +6,7 @@ const Users = require("./module/Users");
 const bcrypt = require("bcrypt");
 const Orders = require("./module/Orders");
 const Category = require("./module/Category");
+const dotenv = require('dotenv')
 // const path = require('path');
 const app = express();
 const stripe = require("stripe")(
@@ -17,6 +18,7 @@ const PORT = process.env.PORT || 8000
 app.use(express.json());
 app.use(cors());
 
+dotenv.config();
  
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
