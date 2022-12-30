@@ -6,21 +6,19 @@ const Users = require("./module/Users");
 const bcrypt = require("bcrypt");
 const Orders = require("./module/Orders");
 const Category = require("./module/Category");
-const path = require('path');
+// const path = require('path');
 const app = express();
 const stripe = require("stripe")(
-  "sk_test_51MHt1ASFBIyqZbMVwq2HiyJyocgRzgJbBYAdq5K6ntvpS9FyfaqKoig0vGjsOJ5ZDfzQs4hDHmr2rBsk1rTPgCO100F9rtc9QC"
+  process.env.STRIPE_URL
 );
-
+const PORT = process.env.PORT || 8000
 
 
 app.use(express.json());
 app.use(cors());
 
-const MONGO_URL =
-  "mongodb+srv://blogadmin:admin1234@cluster0.vztbzci.mongodb.net/ecommerece?retryWrites=true&w=majority";
-
-mongoose.connect(MONGO_URL, {
+ 
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -183,6 +181,6 @@ app.post("/api/orders/get", (req, res) => {
 
 
 
-app.listen(8000, () => {
+app.listen(PORT, () => {
   console.log(`backend running.... `);
 });
